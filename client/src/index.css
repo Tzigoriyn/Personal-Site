@@ -439,6 +439,7 @@ html, body {
   ================================================== */
 .hero {
     background-image: url(https://firebasestorage.googleapis.com/v0/b/personal-site-project-6b514.appspot.com/o/hero.jpg?alt=media&token=1073352e-4147-4a84-89e6-1e4563359a30);
+    /* center no-repeat; */
     min-height: 100%;
     /* height: 100%; */
     height: 100vh;

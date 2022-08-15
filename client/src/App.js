@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import './App.css';
 
-import Top from './TopAndHeader/Top/Top';
-import Header from './TopAndHeader/Header/Header';
-import Footer from './Footer/Footer';
+import Top from './components/TopAndHeader/Top/Top';
+import Header from './components/TopAndHeader/Header/Header';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (

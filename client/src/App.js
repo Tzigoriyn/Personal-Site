@@ -38,7 +38,7 @@ function App() {
             auth.signOut();
             return <Redirect to="/intro" />
           }} />
-          <Route path="/top" component={Intro} />
+          <Route path="/intro" component={Intro} />
         </Switch>
 
         <Footer />

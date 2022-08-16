@@ -52,7 +52,7 @@ const Register = ({
                     <label htmlFor="password">Password</label>
                 </div>
                 <div className={style.userBox}>
-                    <input type="rePassword" name="rePassword" required="rePassword" />
+                    <input type="password" name="rePassword" required="rePassword" />
                     <label htmlFor="rePassword">Repeat password</label>
                 </div>
                 <button className={style.submitBtn} type="submit">

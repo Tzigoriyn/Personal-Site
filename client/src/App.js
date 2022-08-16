@@ -1,24 +1,47 @@
 // import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { auth } from './components/utils/firebase';
 
 import Top from './components/TopAndHeader/Top/Top';
 import Header from './components/TopAndHeader/Header/Header';
 import Footer from './components/Footer/Footer';
-import Inro from './components/Inro/Inro';
+import Login from './components/Login/Login';
+import Intro from './components/Intro/Intro';
 import ErrorBaundary from './components/ErrorBaundary/ErrorBaundary';
+import AuthContext from './components/contexts/authContext';
 
 function App() {
+  const [user, setUser] = useState(null);
+
+
+  useEffect(() => {
+    auth.onAuthStateChanged(setUser)
+  }, []);
+
+  const authInfo = {
+    isAuthenticated: Boolean(user),
+    username: user?.email
+  }
+  console.log(authInfo);
   return (
-    <ErrorBaundary>
-      <Top />
-      <Header />
+    <AuthContext.Provider value={authInfo}>
+      <ErrorBaundary>
+        <Top />
+        <Header />
 
-      <Switch>
-        <Route path="/inro" component={Inro} />
-      </Switch>
+        <Switch>
+          <Route path="/login" exact component={Login} />
+          <Route path="/logout" exact render={() => {
+            auth.signOut();
+            return <Redirect to="/intro" />
+          }} />
+          <Route path="/intro" component={Intro} />
+        </Switch>
 
-      <Footer />
-    </ ErrorBaundary>
+        <Footer />
+      </ ErrorBaundary>
+    </AuthContext.Provider>
   );
 }
 

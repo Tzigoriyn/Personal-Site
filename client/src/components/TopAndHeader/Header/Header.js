@@ -1,4 +1,9 @@
+import { useContext } from 'react';
+import AuthContext from '../../contexts/authContext';
+import { Link } from 'react-router-dom';
+
 const Header = () => {
+    const { username } = useContext(AuthContext);
 
     return (
         <header id="masthead" className="site-header">
@@ -12,27 +17,30 @@ const Header = () => {
                             <span className="icon-bar"></span>
                         </button>
                         <div className="page-scroll site-logo">
-                            <a href="#top">Ivaylo</a>
+                            <Link to="/top">Ivaylo</Link>
                         </div>
                     </div>
                     <div className="main-menu collapse navbar-collapse" id="portfolio-perfect-collapse">
-                        <ul className="nav navbar-nav navbar-right">
-                            <li className="page-scroll"><a href="#top">Home</a></li>
-                            <li className="page-scroll"><a href="#intro">Intro</a></li>
-                            <li className="page-scroll"><a href="#about">About</a></li>
-                            <li className="page-scroll"><a href="#services">Services</a></li>
-                            <li className="page-scroll"><a href="#team">Team</a></li>
-                            <li className="page-scroll"><a href="#history">History</a></li>
-                            <li className="page-scroll"><a href="#works">Works</a></li>
-                            <li className="page-scroll"><a href="#contact">Contact</a></li>
-                            <li className="page-scroll"><a href="#register">Register</a></li>
-                            <li className="page-scroll"><a href="#login">Login</a></li>
-                            <li className="page-scroll"><a href="#logout">Logout</a></li>
-                        </ul>
+                        {username ?
+                            <ul className="nav navbar-nav navbar-right">
+                                <li className="page-scroll"><Link to="/top">Home</Link></li>
+                                <li className="page-scroll"><Link to="/intro">Intro</Link></li>
+                                <li className="page-scroll"><Link to="#about">About</Link></li>
+                                <li className="page-scroll"><Link to="#services">Services</Link></li>
+                                <li className="page-scroll"><Link to="#team">Team</Link></li>
+                                <li className="page-scroll"><Link to="#history">History</Link></li>
+                                <li className="page-scroll"><Link to="#works">Works</Link></li>
+                                <li className="page-scroll"><Link to="#contact">Contact</Link></li>
+                                <li className="page-scroll"><Link to="/logout">Logout</Link></li>
+                            </ul> :
+                            <ul className="nav navbar-nav navbar-right">
+                                <li className="page-scroll"><Link to="#register">Register</Link></li>
+                                <li className="page-scroll"><Link to="/login">Login</Link></li>
+                            </ul>}
                     </div>
                 </div>
             </nav>
-        </header>
+        </header >
     );
 }
 

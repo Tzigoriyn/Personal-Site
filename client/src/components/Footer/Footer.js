@@ -1,4 +1,5 @@
-/* eslint-disable react/jsx-no-target-blank */
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
     return (
         <footer id="colophon" className="site-footer">
@@ -48,15 +49,15 @@ const Footer = () => {
             </div>
     </section><!-- /.carousel -->*/}
                 <div className="page-scroll">
-                    <a href="#top" className="rectangle">
+                    <Link to="/top" className="rectangle">
                         <i className="fa fa-angle-double-up"></i>
-                    </a>
+                    </Link>
                 </div>
 
             </div>
 
             <div className="container text-center">
-                <p className="copyright">&copy; <a href="https://softuni.bg/" target="_blank">Tzigoriyn</a> - 2022</p>
+                <p className="copyright">&copy; <Link to="https://softuni.bg/" target="_blank">Tzigoriyn</Link> - 2022</p>
             </div>
 
         </footer>

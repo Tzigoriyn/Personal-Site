@@ -1,9 +1,9 @@
 import { auth } from '../utils/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-import style from './Login.module.css';
+import style from './Register.module.css';
 
-const Login = ({
+const Register = ({
     history
 }) => {
     const onLoginFormSubmitHandler = (e) => {
@@ -11,6 +11,9 @@ const Login = ({
 
         const email = e.target.email.value;
         const password = e.target.password.value;
+        const rePassword = e.target.rePassword.value;
+
+        console.log(e.target.username.value);
 
         if (!email.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
             return alert('Please input valid email adress');
@@ -20,7 +23,11 @@ const Login = ({
             return alert('Your passwor mast have more than 6 symols!');
         }
 
-        signInWithEmailAndPassword(auth, email, password)
+        if (rePassword !== password) {
+            return alert("Wrong password!");
+        }
+
+        createUserWithEmailAndPassword(auth, email, password)
             .then(userCredential => {
                 // console.log(userCredential);
                 history.push('/intro');
@@ -30,8 +37,12 @@ const Login = ({
 
     return (
         <div className={style.loginBox}>
-            <h2>Login</h2>
+            <h2>Register</h2>
             <form className={style.form} onSubmit={onLoginFormSubmitHandler}>
+                <div className={style.userBox}>
+                    <input type="text" name="username" required="username" />
+                    <label htmlFor="username">Username</label>
+                </div>
                 <div className={style.userBox}>
                     <input type="text" name="email" required="email" />
                     <label htmlFor="email">@-mail</label>
@@ -39,6 +50,10 @@ const Login = ({
                 <div className={style.userBox}>
                     <input type="password" name="password" required="password" />
                     <label htmlFor="password">Password</label>
+                </div>
+                <div className={style.userBox}>
+                    <input type="rePassword" name="rePassword" required="rePassword" />
+                    <label htmlFor="rePassword">Repeat password</label>
                 </div>
                 <button className={style.submitBtn} type="submit">
                     <span></span>
@@ -53,4 +68,4 @@ const Login = ({
     );
 }
 
-export default Login;
+export default Register;

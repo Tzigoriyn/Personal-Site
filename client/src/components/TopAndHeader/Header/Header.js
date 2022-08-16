@@ -34,9 +34,10 @@ const Header = () => {
                                 <li className="page-scroll"><Link to="/logout">Logout</Link></li>
                             </ul> :
                             <ul className="nav navbar-nav navbar-right">
-                                <li className="page-scroll"><Link to="#register">Register</Link></li>
+                                <li className="page-scroll"><Link to="/register">Register</Link></li>
                                 <li className="page-scroll"><Link to="/login">Login</Link></li>
-                            </ul>}
+                            </ul>
+                        }
                     </div>
                 </div>
             </nav>

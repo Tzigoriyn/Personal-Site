@@ -27,7 +27,7 @@ const Header = () => {
                                 <li className="page-scroll"><Link to="/intro">Intro</Link></li>
                                 <li className="page-scroll"><Link to="#about">About</Link></li>
                                 <li className="page-scroll"><Link to="#services">Services</Link></li>
-                                <li className="page-scroll"><Link to="#team">Team</Link></li>
+                                <li className="page-scroll"><Link to="/team">Team</Link></li>
                                 <li className="page-scroll"><Link to="#history">History</Link></li>
                                 <li className="page-scroll"><Link to="#works">Works</Link></li>
                                 <li className="page-scroll"><Link to="#contact">Contact</Link></li>

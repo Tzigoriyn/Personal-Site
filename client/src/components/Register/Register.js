@@ -1,4 +1,4 @@
-import { auth } from '../utils/firebase';
+import { auth } from '../../utils/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 import style from './Register.module.css';

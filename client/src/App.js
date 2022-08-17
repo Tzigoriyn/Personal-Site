@@ -14,6 +14,8 @@ import ErrorBaundary from './components/ErrorBaundary/ErrorBaundary';
 import AuthContext from './components/contexts/authContext';
 import OwnerContext from './components/contexts/ownerContext';
 
+import useOwner from './components/Hooks/useOwner';
+
 function App() {
   const [user, setUser] = useState(null);
   const [uid, setUid] = useState(null);
@@ -29,6 +31,9 @@ function App() {
     uid: uid?.uid
   }
 
+  const [ownerInfo] = useOwner('https://personal-site-project-6b514-default-rtdb.firebaseio.com/users.json', {});
+
+  console.log(ownerInfo);
 
   return (
     <AuthContext.Provider value={authInfo}>

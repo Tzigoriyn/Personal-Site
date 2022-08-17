@@ -1,5 +1,6 @@
-import { auth } from '../../utils/firebase';
+import { auth, database } from '../../utils/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { ref, set } from "firebase/database";
 
 import style from './Register.module.css';
 
@@ -9,11 +10,14 @@ const Register = ({
     const onLoginFormSubmitHandler = (e) => {
         e.preventDefault();
 
+        const user = e.target.username.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         const rePassword = e.target.rePassword.value;
 
-        console.log(e.target.username.value);
+        if (!user) {
+            return alert('Please input username!');
+        }
 
         if (!email.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
             return alert('Please input valid email adress');
@@ -29,10 +33,17 @@ const Register = ({
 
         createUserWithEmailAndPassword(auth, email, password)
             .then(userCredential => {
-                // console.log(userCredential);
+
+
+                set(ref(database, '/users/' + userCredential.user.uid), {
+                    isOwner: false,
+                    name: user,
+                    email: userCredential.user.email
+                });
+
                 history.push('/intro');
             })
-            .catch(error => alert(error.massage))
+            .catch(error => alert(error.message));
     }
 
     return (

@@ -5,6 +5,7 @@ import AuthContext from '../contexts/authContext';
 const isAuth = (WrapedComponent) => {
 
     const Component = (props) => {
+        console.log(props);
         const { isAuthenticated } = useContext(AuthContext);
         const history = useHistory();
 

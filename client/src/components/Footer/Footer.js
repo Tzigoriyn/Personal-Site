@@ -5,7 +5,6 @@ const Footer = () => {
         <footer id="colophon" className="site-footer">
 
             <div className="container-fluid">
-{/*  */}
                 <div className="page-scroll">
                     <Link to="/top" className="rectangle">
                         <i className="fa fa-angle-double-up"></i>

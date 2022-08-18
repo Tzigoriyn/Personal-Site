@@ -1,26 +1,21 @@
 import { useState, useEffect } from 'react';
-import { auth } from '../../utils/firebase';
 
-console.log(auth);
-
-const useOwner = (url) => {
+const useOwner = (email) => {
 
     const [state, setState] = useState();
 
     useEffect(() => {
 
-
-        fetch(url)
+        fetch('https://personal-site-project-6b514-default-rtdb.firebaseio.com/users.json')
             .then(res => res.json())
-            .then(result => {
-                // console.log(result);
-                
-                const currentUser = result.find(result => result.email);
+            .then(results => {
+                const currentUser = Object.values(results).find(result => result.email === email);
 
-                setState(currentUser);
-            })
-            .catch(error => alert(error.message))
-    }, [url]);
+                setState(currentUser)
+            });
+        // })
+        // .catch(error => alert(error.message))
+    }, [email]);
 
     return [
         state,

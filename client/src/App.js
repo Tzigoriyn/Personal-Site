@@ -31,9 +31,7 @@ function App() {
     uid: uid?.uid
   }
 
-  const [ownerInfo] = useOwner('https://personal-site-project-6b514-default-rtdb.firebaseio.com/users.json', {});
-
-  console.log(ownerInfo);
+  const [ownerInfo] = useOwner(authInfo.username, {});
 
   return (
     <AuthContext.Provider value={authInfo}>
@@ -41,18 +39,18 @@ function App() {
         <Top />
         <Header />
 
-        <OwnerContext.Provider value={ownerInfo}>
-          <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/logout" exact render={() => {
-              auth.signOut();
-              return <Redirect to="/intro" />
-            }} />
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/logout" exact render={() => {
+            auth.signOut();
+            return <Redirect to="/intro" />
+          }} />
+          <OwnerContext.Provider value={ownerInfo}>
             <Route path="/intro" component={Intro} />
             <Route path="/team" component={TeamSection} />
-          </Switch>
-        </OwnerContext.Provider>
+          </OwnerContext.Provider>
+        </Switch>
 
         <Footer />
       </ ErrorBaundary>

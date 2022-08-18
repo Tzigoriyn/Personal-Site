@@ -1,9 +1,13 @@
+import { useContext } from 'react';
+import OwnerContext from '../contexts/ownerContext';
+
 const Inro = () => {
+    const ownerInfo = useContext(OwnerContext);
 
     return (
         <section className="site-section section-hello" id="intro">
             <div className="container">
-                <h2>HELLO &amp; WELCOME</h2>
+                <h2>HELLO &amp; WELCOME {ownerInfo ? ownerInfo.name : "Guest please register"}</h2>
                 <p className="section-subtitle"><span>EXPLORE OUR WORLD</span></p>
                 <div className="row">
                     <div className="col-sm-4">

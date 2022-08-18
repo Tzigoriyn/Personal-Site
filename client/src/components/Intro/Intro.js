@@ -7,7 +7,7 @@ const Inro = () => {
     return (
         <section className="site-section section-hello" id="intro">
             <div className="container">
-                <h2>HELLO &amp; WELCOME {ownerInfo ? ownerInfo.name : "Guest please register"}</h2>
+                <h2>HELLO &amp; WELCOME {ownerInfo ? ownerInfo.name : "Guest, please login!"}</h2>
                 <p className="section-subtitle"><span>EXPLORE OUR WORLD</span></p>
                 <div className="row">
                     <div className="col-sm-4">

@@ -9,6 +9,7 @@ import Header from './components/TopAndHeader/Header/Header';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Intro from './components/Intro/Intro';
+import Quote from './components/Quote/Quote';
 import About from './components/About/About';
 import Services from './components/Services/Services';
 import History from './components/History/History';
@@ -19,6 +20,7 @@ import Footer from './components/Footer/Footer';
 import ErrorBaundary from './components/ErrorBaundary/ErrorBaundary';
 import AuthContext from './components/contexts/authContext';
 import OwnerContext from './components/contexts/ownerContext';
+import AddVideo from './components/AddVideo/AddVideo';
 
 
 function App() {
@@ -53,7 +55,9 @@ function App() {
             }} />
             <OwnerContext.Provider value={ownerInfo}>
               <Route path="/intro" component={Intro} />
+              <Route path="/intro" component={Quote} />
               <Route path="/about" component={About} />
+              <Route path="/about" component={AddVideo} />
               <Route path="/services" component={Services} />
               <Route path="/team" component={TeamSection} />
               <Route path="/history" component={History} />

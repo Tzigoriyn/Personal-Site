@@ -9,7 +9,11 @@ import Header from './components/TopAndHeader/Header/Header';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Intro from './components/Intro/Intro';
+import About from './components/About/About';
+import Services from './components/Services/Services';
+import History from './components/History/History';
 import TeamSection from './components/TeamSection/TeamSection';
+import Works from './components/Works/Works';
 import ContactUs from './components/ContactUs/ContactUs';
 import Footer from './components/Footer/Footer';
 import ErrorBaundary from './components/ErrorBaundary/ErrorBaundary';
@@ -49,8 +53,11 @@ function App() {
             }} />
             <OwnerContext.Provider value={ownerInfo}>
               <Route path="/intro" component={Intro} />
+              <Route path="/about" component={About} />
+              <Route path="/services" component={Services} />
               <Route path="/team" component={TeamSection} />
-
+              <Route path="/history" component={History} />
+              <Route path="/works" component={Works} />
               <Route path="/contact" component={ContactUs} />
             </OwnerContext.Provider>
           </Switch>

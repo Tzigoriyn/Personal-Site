@@ -1,0 +1,55 @@
+.section-contact .container {
+    max-width: 770px;
+}
+
+.section-contact .container form {
+    margin-top: 70px;
+}
+
+.section-contact .btn {
+    margin-top: 50px;
+    width: 100%;
+    border-color: #dddddd;
+    color: #000;
+}
+
+.section-contact .btn:hover {
+    color: #ffffff;
+    border-color: #196fc2;
+}
+
+.form-control {
+    border: 0;
+    border-bottom: 1px solid #dddddd;
+    box-shadow: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-bottom-color: #196fc2;
+}
+
+textarea.form-control {
+    margin-top: 50px;
+    min-height: 150px;
+    resize: none;
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* Section: Contact */
+    .section-contact .container form {
+        margin-top: 30px;
+    }
+
+    .section-contact .btn {
+        margin-top: 30px;
+    }
+
+    .form-control,
+    textarea.form-control {
+        margin-top: 15px;
+    }
+}

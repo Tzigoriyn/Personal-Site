@@ -1,12 +1,26 @@
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
+import emailjs from 'emailjs-com';
 import OwnerContext from '../contexts/ownerContext';
+import './ContactUs.css';
 
-const ContactUs = () => {
-    const {name, email, isOwner} = useContext(OwnerContext);
+const ContactUs = ({
+    history
+}) => {
+    const { name, email, isOwner } = useContext(OwnerContext);
 
-    // console.log(props);
-    // const { isOwner } = ownerInfo;
-    // console.log(isOwner);
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_kgp4rfg', 'template_05wfwyg', form.current, 'sugy-i6wRQfve_ExY')
+            .then(() => {
+                alert('You sended message seccessful');
+                history.push('/intro');
+            }, (error) => {
+                alert(error.message);
+            });
+    };
     return (
 
         <section className="site-section section-contact" id="contact">
@@ -15,18 +29,18 @@ const ContactUs = () => {
                     <h2>CONTACT US</h2>
                     <p className="section-subtitle"><span>Here i am</span></p>
                     <div className="row">
-                        <form>
+                        <form ref={form} onSubmit={sendEmail}>
                             <div className="col-md-4">
-                                <input className="form-control" readOnly type="text" placeholder="Name" required value={name || ''} />
+                                <input className="form-control" name="to_name" readOnly type="text" placeholder="Name" required defaultValue={name} />
                             </div>
                             <div className="col-md-4">
-                                <input className="form-control" readOnly type="email" placeholder="Email" required value={email || ''} />
+                                <input className="form-control" name="from_name" readOnly type="email" placeholder="Email" required defaultValue={email} />
                             </div>
                             <div className="col-md-4">
-                                <input className="form-control" type="text" placeholder="Subject" required />
+                                <input className="form-control" name="from_name" type="text" placeholder="Subject" required />
                             </div>
                             <div className="col-sm-12">
-                                <textarea className="form-control" placeholder="Your Message" required />
+                                <textarea className="form-control" name="message" placeholder="Your Message" required />
                             </div>
 
                             <div className="col-sm-12">

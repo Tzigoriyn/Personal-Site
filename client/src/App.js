@@ -21,6 +21,7 @@ import ErrorBaundary from './components/ErrorBaundary/ErrorBaundary';
 import AuthContext from './components/contexts/authContext';
 import OwnerContext from './components/contexts/ownerContext';
 import AddVideo from './components/AddVideo/AddVideo';
+import Modals from './components/Modals/Modals';
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
               <Route path="/contact" component={ContactUs} />
             </OwnerContext.Provider>
           </Switch>
+          <Modals />
         </main>
         <Footer />
       </ ErrorBaundary>

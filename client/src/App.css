@@ -1,0 +1,72 @@
+.site-main {
+    background-color: #ffffff;
+    z-index: 1;
+}
+
+.site-section {
+    padding: 100px 0;
+}
+
+.site-section h2 {
+    font-family: "Varela", sans-serif;
+    margin: 0;
+    font-size: 32px;
+    color: #196fc2;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.section-diff-title h2 {
+    margin: 0;
+    font-weight: 300;
+    color: #666;
+}
+
+.section-diff-title p {
+    position: relative;
+    font-family: "Varela", sans-serif;
+    margin: 60px 0 0;
+}
+
+.section-diff-title p:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 1px;
+    width: 50px;
+    background-color: #666;
+}
+
+@media only screen and (max-width: 991px) {
+
+    /* Sections */
+    .site-section {
+        padding: 80px 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* Sections */
+    .site-section {
+        padding: 60px 0;
+    }
+
+    .site-section h2 {
+        font-size: 24px;
+    }
+
+    .section-subtitle span {
+        display: inline-block;
+        max-width: 230px;
+        font-size: 14px;
+    }
+}
+
+.section-hello .col-sm-4 {
+    min-height: 325px;
+}

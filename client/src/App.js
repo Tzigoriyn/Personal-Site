@@ -1,4 +1,4 @@
-// import './App.css';
+import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { auth } from './utils/firebase';
@@ -39,21 +39,22 @@ function App() {
       <ErrorBaundary>
         <Top />
         <Header />
+        <main id="main" className="site-main">
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/logout" exact render={() => {
+              auth.signOut();
+              return <Redirect to="/intro" />
+            }} />
+            <OwnerContext.Provider value={ownerInfo}>
+              <Route path="/intro" component={Intro} />
+              <Route path="/team" component={TeamSection} />
 
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/logout" exact render={() => {
-            auth.signOut();
-            return <Redirect to="/intro" />
-          }} />
-          <OwnerContext.Provider value={ownerInfo}>
-            <Route path="/intro" component={Intro} />
-            <Route path="/team" component={TeamSection} />
-
-            <Route path="/contact" component={ContactUs} />
-          </OwnerContext.Provider>
-        </Switch>
+              <Route path="/contact" component={ContactUs} />
+            </OwnerContext.Provider>
+          </Switch>
+        </main>
         <Footer />
       </ ErrorBaundary>
     </AuthContext.Provider>

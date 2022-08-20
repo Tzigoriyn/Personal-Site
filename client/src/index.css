@@ -285,6 +285,45 @@ html, body {
 /*
    * Sections
    */
+.section-subtitle {
+    position: relative;
+    font-family: "Varela", sans-serif;
+    margin: 15px 0 0;
+    font-size: 16px;
+    line-height: 16px;
+    color: #666;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.section-subtitle span {
+    position: relative;
+}
+
+.section-subtitle span:before, .section-subtitle span:after {
+    display: inline-block;
+    content: '';
+    height: 1px;
+    background-color: #666;
+    width: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+
+.section-subtitle span:before {
+    left: -30px;
+}
+
+.section-subtitle span:after {
+    right: -30px;
+}
+
 .section-subtitle span {
     position: relative;
 }

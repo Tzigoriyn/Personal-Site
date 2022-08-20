@@ -28,23 +28,13 @@ class Work extends Component {
 
         workServices.getAll(grup)
             .then(workRes => {
-                let filtred = Object.entries(workRes)
-                    .filter(x => x[1].grup === grup)
-                    .reduce((accum, [k, v]) => {
-                        accum[k] = v;
-                        return accum;
-                    }, {});
                 this.setState({
-                    works: filtred
+                    works: workServices.filterWorks(workRes, grup)
                 })
             })
-
-        // .then(workRes => this.setState({ works: workRes, curentGrup: grup }))
     }
 
     render() {
-        // console.log(this.props.match.params);
-        // console.log(this.state.works);
         return (
             <section className="site-section section-works" id="works" >
                 <div className="container">

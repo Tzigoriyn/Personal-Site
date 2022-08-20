@@ -9,3 +9,12 @@ export const getAll = (grup) => {
         .then(res => res.json())
         .catch(error => alert(error.message))
 }
+
+export const filterWorks = (workRes, grup) => {
+    return Object.entries(workRes)
+        .filter(x => x[1].grup === grup)
+        .reduce((accum, [k, v]) => {
+            accum[k] = v;
+            return accum;
+        }, {});
+}

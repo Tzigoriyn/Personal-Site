@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const WorkCard = ({
+    id,
     work,
     grup,
     templeteWork,
@@ -11,7 +12,7 @@ const WorkCard = ({
             <div className="portfolio-item">
                 <div className="portfolio-item-thumb">
                     <img src={imgWork} alt="" className="img-res" />
-                    <Link to="#" className="rectangle" data-toggle="modal" data-target="#portfolioItem1">
+                    <Link to="/work/details/:workId" className="rectangle" data-toggle="modal" data-target="#portfolioItem1">
                         <i className="fa fa-plus"></i>
                     </Link>
                 </div>

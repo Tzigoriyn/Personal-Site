@@ -17,11 +17,11 @@ import TeamSection from './components/TeamSection/TeamSection';
 import Works from './components/Works/Works';
 import ContactUs from './components/ContactUs/ContactUs';
 import Footer from './components/Footer/Footer';
-// import ErrorBaundary from './components/ErrorBaundary/ErrorBaundary';
+import ErrorBaundary from './components/ErrorBaundary/ErrorBaundary';
 import AuthContext from './components/contexts/authContext';
 import OwnerContext from './components/contexts/ownerContext';
 import AddVideo from './components/AddVideo/AddVideo';
-import Modals from './components/Modals/Modals';
+// import Modals from './components/Modals/Modals';
 
 
 function App() {
@@ -43,34 +43,34 @@ function App() {
 
   return (
     <AuthContext.Provider value={authInfo}>
-      {/* <ErrorBaundary> */}
-      <Top />
-      <Header />
-      <main id="main" className="site-main">
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/logout" exact render={() => {
-            auth.signOut();
-            return <Redirect to="/intro" />
-          }} />
-          <OwnerContext.Provider value={ownerInfo}>
-            <Route path="/intro" component={Intro} />
-            <Route path="/intro" component={Quote} />
-            <Route path="/about" component={About} />
-            <Route path="/about" component={AddVideo} />
-            <Route path="/services" component={ClientServices} />
-            <Route path="/team" component={TeamSection} />
-            <Route path="/history" component={History} />
-            <Route path="/works/all" exact component={Works} />
-            <Route path="/works/:grup" component={Works} />
-            <Route path="/contact" component={ContactUs} />
-          </OwnerContext.Provider>
-        </Switch>
-        <Modals />
-      </main>
-      <Footer />
-      {/* </ ErrorBaundary> */}
+      <ErrorBaundary>
+        <Top />
+        <Header />
+        <main id="main" className="site-main">
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/logout" exact render={() => {
+              auth.signOut();
+              return <Redirect to="/intro" />
+            }} />
+            <OwnerContext.Provider value={ownerInfo}>
+              <Route path="/intro" component={Intro} />
+              <Route path="/intro" component={Quote} />
+              <Route path="/about" component={About} />
+              <Route path="/about" component={AddVideo} />
+              <Route path="/services" component={ClientServices} />
+              <Route path="/team" component={TeamSection} />
+              <Route path="/history" component={History} />
+              <Route path="/works" exact component={Works} />
+              <Route path="/works/:grup" exact component={Works} />
+              <Route path="/contact" component={ContactUs} />
+            </OwnerContext.Provider>
+          </Switch>
+          {/* <Modals /> */}
+        </main>
+        <Footer />
+      </ ErrorBaundary>
     </AuthContext.Provider>
   );
 }

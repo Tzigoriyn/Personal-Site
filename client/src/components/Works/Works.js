@@ -46,6 +46,7 @@ class Work extends Component {
                             {Object.entries(this.state.works)
                                 .map(x => < WorkCard
                                     key={x[0]}
+                                    id={x[0]}
                                     imgWork={x[1].imgWork}
                                     grup={x[1].grup}
                                     templeteWork={x[1].templeteWork}

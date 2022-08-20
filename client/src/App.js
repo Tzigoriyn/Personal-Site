@@ -62,7 +62,7 @@ function App() {
             <Route path="/services" component={ClientServices} />
             <Route path="/team" component={TeamSection} />
             <Route path="/history" component={History} />
-            <Route path="/works" exact component={Works} />
+            <Route path="/works/all" exact component={Works} />
             <Route path="/works/:grup" component={Works} />
             <Route path="/contact" component={ContactUs} />
           </OwnerContext.Provider>

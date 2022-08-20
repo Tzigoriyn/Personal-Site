@@ -30,7 +30,7 @@ const Header = () => {
                                 <li className="page-scroll"><Link to="/services">Services</Link></li>
                                 <li className="page-scroll"><Link to="/team">Team</Link></li>
                                 <li className="page-scroll"><Link to="/history">History</Link></li>
-                                <li className="page-scroll"><Link to="/works">Works</Link></li>
+                                <li className="page-scroll"><Link to="/works/all">Works</Link></li>
                                 <li className="page-scroll"><Link to="/contact">Contact</Link></li>
                                 <li className="page-scroll"><Link to="/logout">Logout</Link></li>
                             </ul> :

@@ -21,7 +21,7 @@ class Work extends Component {
 
     componentDidUpdate(prevProps) {
         let grup = this.props.match.params.grup;
-
+        console.log(grup);
         if (prevProps.match.params.grup === grup) {
             return;
         }

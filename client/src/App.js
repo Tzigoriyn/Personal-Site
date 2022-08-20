@@ -21,7 +21,7 @@ import ErrorBaundary from './components/ErrorBaundary/ErrorBaundary';
 import AuthContext from './components/contexts/authContext';
 import OwnerContext from './components/contexts/ownerContext';
 import AddVideo from './components/AddVideo/AddVideo';
-// import Modals from './components/Modals/Modals';
+import WorkDetails from './components/WorkDetails/WorkDetails';
 
 
 function App() {
@@ -63,11 +63,11 @@ function App() {
               <Route path="/team" component={TeamSection} />
               <Route path="/history" component={History} />
               <Route path="/works" exact component={Works} />
-              <Route path="/works/:grup" exact component={Works} />
+              <Route path="/works/:grup" component={Works} />
+              <Route path="/work/details/:workId" component={WorkDetails} />
               <Route path="/contact" component={ContactUs} />
             </OwnerContext.Provider>
           </Switch>
-          {/* <Modals /> */}
         </main>
         <Footer />
       </ ErrorBaundary>

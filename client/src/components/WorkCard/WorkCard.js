@@ -12,7 +12,7 @@ const WorkCard = ({
             <div className="portfolio-item">
                 <div className="portfolio-item-thumb">
                     <img src={imgWork} alt="" className="img-res" />
-                    <Link to="/work/details/:workId" className="rectangle" data-toggle="modal" data-target="#portfolioItem1">
+                    <Link to={`/work/details/${id}`} className="rectangle">
                         <i className="fa fa-plus"></i>
                     </Link>
                 </div>

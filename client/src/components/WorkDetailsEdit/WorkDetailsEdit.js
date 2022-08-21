@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import * as workServices from '../services/workServices'
 
-import style from './WorkCreate.module.css';
+import style from './WorkDetailsEdit.module.css';
 
 const WorksCreate = ({
     history
@@ -67,7 +67,7 @@ const WorksCreate = ({
     }
     return (
         <div className={style.loginBox}>
-            <h2>Create work</h2>
+            <h2>Edit work</h2>
             <form className={style.form} onSubmit={onCreateFormSubmitHandler}>
                 <div className={style.userBox}>
                     <input type="text" name="work" required="work" />
@@ -106,7 +106,7 @@ const WorksCreate = ({
                     <span></span>
                     <span></span>
                     <span></span>
-                    Create work
+                    Edit work
                 </button>
                 <div style={{ fontSize: "20px" }}>Please find the right position to submit &#128523;</div>
             </form>

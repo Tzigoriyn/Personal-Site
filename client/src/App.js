@@ -16,6 +16,7 @@ import History from './components/History/History';
 import TeamSection from './components/TeamSection/TeamSection';
 import Works from './components/Works/Works';
 import WorkCreate from './components/WorkCreate/WorkCreate';
+import WorkDetailsEdit from './components/WorkDetailsEdit/WorkDetailsEdit';
 import ContactUs from './components/ContactUs/ContactUs';
 import Footer from './components/Footer/Footer';
 import ErrorBaundary from './components/ErrorBaundary/ErrorBaundary';
@@ -66,7 +67,8 @@ function App() {
               <Route path="/works" exact component={Works} />
               <Route path="/works/:grup" component={Works} />
               <Route path="/work/create" exact component={WorkCreate} />
-              <Route path="/work/details/:workId" component={WorkDetails} />
+              <Route path="/work/details/:workId" exact component={WorkDetails} />
+              <Route path="/work/details/:workId/edit" component={WorkDetailsEdit} />
               <Route path="/contact" component={ContactUs} />
             </OwnerContext.Provider>
           </Switch>

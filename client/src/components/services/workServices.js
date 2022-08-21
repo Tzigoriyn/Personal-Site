@@ -25,9 +25,9 @@ export const filterWorks = (workRes, grup) => {
             }, {});
     } else {
         let selectedWork = Object.entries(workRes)
-            .filter(x => x[0].grup === grup);
+            .find(x => x[0] === grup);
 
-        return Object.assign({}, [selectedWork])
+        return selectedWork[1];
     }
 }
 

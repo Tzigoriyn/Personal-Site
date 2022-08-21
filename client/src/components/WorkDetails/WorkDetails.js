@@ -14,26 +14,25 @@ const WorkDetails = ({
     useEffect(() => {
         workServices.getAll()
             .then(workRes => {
-                setWork({
-                    works: workServices.filterWorks(workRes, match.params.workId)
-                })
+                let work = workServices.filterWorks(workRes, match.params.workId)
+                setWork(work)
             })
     }, [])
 
     return (
         <div className="container">
             <div className="row bg-light text-dark">
-                <h1>Details</h1>
+                <h1>{work.work}</h1>
 
                 <div className="col-md-8">
-                    <img className="img-thumbnail" src="{ctx.imageUrl}" alt="imageUrl" />
+                    <img className="img-thumbnail" src={work.imgWork} alt={work.imgWork} />
                 </div>
                 <div className="col-md-4 text-center">
-                    <h3 className="my-3 ">Movie Description</h3>
-                    <p>Deskription</p>
-                    
-                    <Link className="btn btn-warning" to="#">Edit</Link>
-                    <Link className="btn btn-danger" to="#">Delete</Link>
+                    <h3 className="my-3 ">{work.title}</h3>
+                    <p>{work.description}</p>
+
+                    <Link className="btn btn-warning" to={`/work/details/${match.params.workId}/edit`}>Edit</Link>
+                    <Link className="btn btn-danger" to="/work/delete">Delete</Link>
                 </div>
             </div>
         </div >

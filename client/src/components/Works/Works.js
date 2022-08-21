@@ -37,6 +37,7 @@ class Work extends Component {
 
     render() {
         return (
+            
             <section className="site-section section-works" id="works" >
                 <div className="container">
                     <h2>RECENT WORKS</h2>

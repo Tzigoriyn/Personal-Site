@@ -11,7 +11,7 @@ const WorksCreate = ({
     const [file, setFile] = useState('');
     const [percent, setPercent] = useState(0);
     const [url, setUrl] = useState('');
-    const [workValue, setWorkValue] = useState('');
+    const [setWorkValue] = useState('');
 
 
     function handleChange(event) {

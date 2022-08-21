@@ -1,18 +1,32 @@
 import { storage } from '../../utils/firebase';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import * as workServices from '../services/workServices'
 
 import style from './WorkDetailsEdit.module.css';
 
 const WorksCreate = ({
+    match,
     history
 }) => {
     const [file, setFile] = useState('');
     const [percent, setPercent] = useState(0);
     const [url, setUrl] = useState('');
+    const [editWork, setEditWork] = useState({})
     const [setWorkValue] = useState('');
 
+    useEffect(() => {
+        if (!match.params.workId) {
+            return;
+        }
+
+        workServices.getAll()
+            .then(workRes => {
+                let work = Object.values({ works: workServices.filterWorks(workRes, match.params.workId) });
+
+                setEditWork(work[0])
+            })
+    }, [])
 
     function handleChange(event) {
         setFile(event.target.files[0]);
@@ -61,19 +75,19 @@ const WorksCreate = ({
         const title = e.target.title.value;
         const description = e.target.description.value;
 
-        workServices.createWork(work, grup, templeteWork, imgWork, title, description);
+        workServices.patchOne(work, grup, templeteWork, imgWork, title, description)
 
-        history.push('/works/all');
+        history.push(`/works/details/${match.params.workId}`);
     }
     return (
         <div className={style.loginBox}>
             <h2>Edit work</h2>
             <form className={style.form} onSubmit={onCreateFormSubmitHandler}>
                 <div className={style.userBox}>
-                    <input type="text" name="work" required="work" />
+                    <input type="text" name="work" required="work" defaultValue={editWork.work} />
                     <label htmlFor="work">Field of work</label>
                 </div>
-                <div className={style.userBox} id="workDescription" onChange={onstepChangeSelectHandlelr}>
+                <div className={style.userBox} id="workDescription" onChange={onstepChangeSelectHandlelr} defaultValue={editWork.work}>
                     <select name="grup" id="grup">
                         <option>webdesign</option>
                         <option>webdev</option>
@@ -81,7 +95,7 @@ const WorksCreate = ({
                     </select>
                 </div>
                 <div className={style.userBox}>
-                    <input type="text" name="templeteWork" required="templeteWork" />
+                    <input type="text" name="templeteWork" required="templeteWork" defaultValue={editWork.templeteWork} />
                     <label htmlFor="templeteWork">PSD Template</label>
                 </div>
                 <div>
@@ -90,15 +104,15 @@ const WorksCreate = ({
                     <p> {percent} "% done" </p>
                 </div>
                 <div className={style.userBox}>
-                    <input type="text" name="imgWork" required="imgWork" defaultValue={url} />
-                    <label htmlFor="imgWork">Img work</label>
+                    <input type="text" name="imgWork" required="imgWork" defaultValue={editWork.imgWork} />
+                    <label htmlFor="imgWork">{url}</label>
                 </div>
                 <div className={style.userBox}>
-                    <input type="text" name="title" required="title" />
+                    <input type="text" name="title" required="title" defaultValue={editWork.title} />
                     <label htmlFor="title">Title</label>
                 </div>
                 <div className={style.userBox}>
-                    <input type="text" name="description" required="description" />
+                    <input type="text" name="description" required="description" defaultValue={editWork.description} />
                     <label htmlFor="description">Description</label>
                 </div>
                 <button className={style.submitBtn} type="submit">

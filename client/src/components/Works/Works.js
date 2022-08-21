@@ -2,6 +2,7 @@ import { Component } from "react";
 import * as workServices from '../services/workServices';
 import WorkNav from "./WorkNav/WorkNav";
 import WorkCard from "../WorkCard/WorkCard";
+import { Link } from 'react-router-dom'
 
 class Work extends Component {
     constructor(props) {
@@ -54,6 +55,7 @@ class Work extends Component {
                                 />
                                 )}
                         </div>
+                        <Link className="btn btn-warning" to="/work/create">Create</Link>
                     </div>
                 </div>
             </section>

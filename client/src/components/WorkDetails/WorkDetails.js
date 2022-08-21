@@ -31,7 +31,7 @@ const WorkDetails = ({
                 <div className="col-md-4 text-center">
                     <h3 className="my-3 ">Movie Description</h3>
                     <p>Deskription</p>
-                    <Link className="btn btn-warning" to="#">Create</Link>
+                    
                     <Link className="btn btn-warning" to="#">Edit</Link>
                     <Link className="btn btn-danger" to="#">Delete</Link>
                 </div>

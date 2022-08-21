@@ -1,7 +1,7 @@
 import { database } from '../../utils/firebase';
 import { ref, set } from "firebase/database";
 
-export const getAll = (grup) => {
+export const getAll = () => {
     let urlWork = `https://personal-site-project-6b514-default-rtdb.firebaseio.com/works.json`;
     // did not work with Firebase !!!
     // urlWork += grup
@@ -43,3 +43,15 @@ export const createWork = (work, grup, templeteWork, imgWork, title, description
     })
         .catch(error => alert(error.message));
 }
+
+export const patchOne = (work, grup, templeteWork, imgWork, title, description, workId) => {
+       
+        set(ref(database, '/users/' + workId), {
+            work,
+            grup,
+            templeteWork,
+            imgWork,
+            title,
+            description,
+        });
+    }

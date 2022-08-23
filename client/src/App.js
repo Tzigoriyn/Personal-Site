@@ -64,7 +64,7 @@ function App() {
               <Route path="/services" component={ClientServices} />
               <Route path="/team" component={TeamSection} />
               <Route path="/history" component={History} />
-              <Route path="/works" exact component={Works} />
+              <Route path="/works" exact component={props => <Works {...props} {...ownerInfo} />} />
               <Route path="/works/:grup" component={Works} />
               <Route path="/work/create" exact component={WorkCreate} />
               <Route path="/work/details/:workId" exact component={WorkDetails} />

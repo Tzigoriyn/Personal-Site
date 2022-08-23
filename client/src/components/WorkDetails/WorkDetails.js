@@ -3,13 +3,15 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as workServices from '../services/workServices'
+import { useContext } from 'react';
+import OwnerContext from '../contexts/ownerContext';
 
 const WorkDetails = ({
     match,
     history,
 }) => {
     const [work, setWork] = useState({});
-
+    const ownerInfo = useContext(OwnerContext)
 
     useEffect(() => {
         workServices.getAll()
@@ -30,9 +32,12 @@ const WorkDetails = ({
                 <div className="col-md-4 text-center">
                     <h3 className="my-3 ">{work.title}</h3>
                     <p>{work.description}</p>
-
-                    <Link className="btn btn-warning" to={`/work/details/${match.params.workId}/edit`}>Edit</Link>
-                    <Link className="btn btn-danger" to="/work/delete">Delete</Link>
+                    {ownerInfo.isOwner ?
+                        <>
+                            <Link className="btn btn-warning" to={`/work/details/${match.params.workId}/edit`}>Edit</Link>
+                            <Link className="btn btn-danger" to="/work/delete">Delete</Link>
+                        </>
+                        : ""}
                 </div>
             </div>
         </div >

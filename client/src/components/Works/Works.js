@@ -2,7 +2,7 @@ import { Component } from "react";
 import * as workServices from '../services/workServices';
 import WorkNav from "./WorkNav/WorkNav";
 import WorkCard from "../WorkCard/WorkCard";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 class Work extends Component {
     constructor(props) {
@@ -13,7 +13,6 @@ class Work extends Component {
             curentGrup: 'all'
         };
     }
-
 
     componentDidMount() {
         workServices.getAll()
@@ -37,7 +36,6 @@ class Work extends Component {
 
     render() {
         return (
-            
             <section className="site-section section-works" id="works" >
                 <div className="container">
                     <h2>RECENT WORKS</h2>
@@ -56,7 +54,10 @@ class Work extends Component {
                                 />
                                 )}
                         </div>
-                        <Link className="btn btn-warning" to="/work/create">Create</Link>
+                        {this.props.isOwner
+                            ? <Link className="btn btn-warning" to="/work/create">Create</Link>
+                            : ''}
+
                     </div>
                 </div>
             </section>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { storage } from '../../utils/firebase';
 import { useState, useEffect } from 'react';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -75,9 +76,9 @@ const WorksCreate = ({
         const title = e.target.title.value;
         const description = e.target.description.value;
 
-        workServices.patchOne(work, grup, templeteWork, imgWork, title, description)
+        workServices.patchOne(work, grup, templeteWork, imgWork, title, description, match.params.workId)
 
-        history.push(`/works/details/${match.params.workId}`);
+        history.push(`/work/details/${match.params.workId}`);
     }
     return (
         <div className={style.loginBox}>

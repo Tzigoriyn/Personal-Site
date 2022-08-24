@@ -45,13 +45,14 @@ export const createWork = (work, grup, templeteWork, imgWork, title, description
 }
 
 export const patchOne = (work, grup, templeteWork, imgWork, title, description, workId) => {
-       
-        set(ref(database, '/users/' + workId), {
-            work,
-            grup,
-            templeteWork,
-            imgWork,
-            title,
-            description,
-        });
-    }
+
+    set(ref(database, '/works/' + workId), {
+        work,
+        grup,
+        templeteWork,
+        imgWork,
+        title,
+        description,
+    })
+        .catch(error => alert(error.message));
+}

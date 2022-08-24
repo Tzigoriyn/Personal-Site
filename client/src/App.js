@@ -68,7 +68,7 @@ function App() {
               <Route path="/works/:grup" component={Works} />
               <Route path="/work/create" exact component={WorkCreate} />
               <Route path="/work/details/:workId" exact component={WorkDetails} />
-              <Route path="/work/details/:workId/edit" component={WorkDetailsEdit} />
+              <Route path="/work/details/:workId/edit" component={props => <WorkDetailsEdit {...props} {...authInfo} />} />
               <Route path="/contact" component={ContactUs} />
             </OwnerContext.Provider>
           </Switch>

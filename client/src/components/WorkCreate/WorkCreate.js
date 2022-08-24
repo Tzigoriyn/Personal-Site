@@ -11,7 +11,8 @@ const WorksCreate = ({
     const [file, setFile] = useState('');
     const [percent, setPercent] = useState(0);
     const [url, setUrl] = useState('');
-    const [setWorkValue] = useState('');
+    // eslint-disable-next-line no-unused-vars
+    const [workValue, setWorkValue] = useState('');
 
 
     function handleChange(event) {

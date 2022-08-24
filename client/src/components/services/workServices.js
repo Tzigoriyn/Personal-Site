@@ -1,5 +1,6 @@
 import { database } from '../../utils/firebase';
-import { ref, set } from "firebase/database";
+import { ref, set } from 'firebase/database';
+import * as createId from '../services/createId'
 
 export const getAll = () => {
     let urlWork = `https://personal-site-project-6b514-default-rtdb.firebaseio.com/works.json`;
@@ -32,8 +33,8 @@ export const filterWorks = (workRes, grup) => {
 }
 
 export const createWork = (work, grup, templeteWork, imgWork, title, description) => {
-    set(ref(database, '/works/' + Math.floor(Math.random() * 100)
-    ), {
+    // set(ref(database, '/works/' + Math.floor(Math.random() * 100) create short id
+    set(ref(database, '/works/' + createId.id()), {
         work,
         grup,
         templeteWork,

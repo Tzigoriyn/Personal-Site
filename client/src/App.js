@@ -15,6 +15,7 @@ import ClientServices from './components/ClientServices/ClientServices';
 import History from './components/History/History';
 import TeamSection from './components/TeamSection/TeamSection';
 import Works from './components/Works/Works';
+import ConnectMe from './components/ConnectMe/ConnectMe'
 import WorkCreate from './components/WorkCreate/WorkCreate';
 import WorkDetailsEdit from './components/WorkDetailsEdit/WorkDetailsEdit';
 import ContactUs from './components/ContactUs/ContactUs';
@@ -65,6 +66,7 @@ function App() {
               <Route path="/team" component={TeamSection} />
               <Route path="/history" component={History} />
               <Route path="/works/:grup" exact component={props => <Works {...props} {...ownerInfo} />} />
+              <Route path="/works/:grup" exact component={ConnectMe} />
               {/* <Route path="/works/:grup" component={Works} /> unneeded component rout*/}
               <Route path="/work/create" exact component={WorkCreate} />
               <Route path="/work/details/:workId" exact component={WorkDetails} />

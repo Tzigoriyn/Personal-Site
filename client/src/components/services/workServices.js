@@ -1,5 +1,5 @@
 import { database } from '../../utils/firebase';
-import { ref, set } from 'firebase/database';
+import { ref, remove, set } from 'firebase/database';
 import * as createId from '../services/createId'
 
 export const getAll = () => {
@@ -56,4 +56,10 @@ export const patchOne = (work, grup, templeteWork, imgWork, title, description, 
         description,
     })
         .catch(error => alert(error.message));
+}
+
+export const deleteOne = (workId) => {
+    remove(ref(database, '/works/' + workId))
+    .then(res => res)
+    .catch(error => alert(error.message))
 }

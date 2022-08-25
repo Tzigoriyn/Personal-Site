@@ -5,21 +5,29 @@ import { useState, useEffect } from 'react';
 import * as workServices from '../services/workServices'
 import { useContext } from 'react';
 import OwnerContext from '../contexts/ownerContext';
+import AuthContext from '../contexts/authContext';
 
 const WorkDetails = ({
     match,
     history,
 }) => {
     const [work, setWork] = useState({});
-    const ownerInfo = useContext(OwnerContext)
+    const authInfo = useContext(AuthContext)
+    const ownerInfo = useContext(OwnerContext);
 
     useEffect(() => {
         workServices.getAll()
             .then(workRes => {
-                let work = workServices.filterWorks(workRes, match.params.workId)
-                setWork(work)
+                let work = workServices.filterWorks(workRes, match.params.workId);
+                setWork(work);
             })
-    }, [])
+    }, []);
+
+    const onDeleteHaandler = () => {
+        workServices.deleteOne(match.params.workId, authInfo.uid)
+
+        history.push('/works')
+    }
 
     return (
         <div className="container">
@@ -35,7 +43,7 @@ const WorkDetails = ({
                     {ownerInfo.isOwner ?
                         <>
                             <Link className="btn btn-warning" to={`/work/details/${match.params.workId}/edit`}>Edit</Link>
-                            <Link className="btn btn-danger" to="/work/delete">Delete</Link>
+                            <Link className="btn btn-danger" to="/works" onClick={onDeleteHaandler}>Delete</Link>
                         </>
                         : ""}
                 </div>

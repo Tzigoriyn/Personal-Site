@@ -1,3 +1,5 @@
+/* eslint-disable no-mixed-operators */
+/* eslint-disable eqeqeq */
 export const id = () => {
     let u = '', i = 0;
     while (i++ < 36) {

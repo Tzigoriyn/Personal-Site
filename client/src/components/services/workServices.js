@@ -1,6 +1,6 @@
 import { database } from '../../utils/firebase';
 import { ref, remove, set } from 'firebase/database';
-import * as createId from '../services/createId'
+import * as createId from '../services/createId';
 
 export const getAll = () => {
     let urlWork = `https://personal-site-project-6b514-default-rtdb.firebaseio.com/works.json`;

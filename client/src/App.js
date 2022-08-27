@@ -12,6 +12,7 @@ import Intro from './components/Intro/Intro';
 import Quote from './components/Quote/Quote';
 import About from './components/About/About';
 import ClientServices from './components/ClientServices/ClientServices';
+import Clients from './components/Clients/Clients';
 import History from './components/History/History';
 import TeamSection from './components/TeamSection/TeamSection';
 import Works from './components/Works/Works';
@@ -63,6 +64,7 @@ function App() {
               <Route path="/about" component={About} />
               <Route path="/about" component={AddVideo} />
               <Route path="/services" component={ClientServices} />
+              <Route path="/services" component={Clients} />
               <Route path="/team" component={TeamSection} />
               <Route path="/history" component={History} />
               <Route path="/works/:grup" exact component={props => <Works {...props} {...ownerInfo} />} />
